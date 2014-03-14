@@ -2,7 +2,7 @@
 <div class="dwqa-question-stand-alone">
 	<article id="question-<?php echo $post->ID ?>" <?php post_class( 'dwqa-question' ); ?>>
 	    <header class="dwqa-header">
-	        <h1 class="dwqa-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h1>
+	        <h1 class="dwqa-title"><a target="_blank" href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h1>
 	    </header>
 	    <div class="dwqa-content">
 	    	<div class="dwqa-content-inner dim">
@@ -21,13 +21,13 @@
 
 	    <footer class="dwqa-footer">
 	        <div class="dwqa-author"><?php echo get_avatar( $post->post_author, 32, false ); ?><span class="author"><?php  
-	                    printf('<a href="%1$s" title="%2$s %3$s">%3$s</a>',
+	                    printf('<a target="_blank" href="%1$s" title="%2$s %3$s">%3$s</a>',
 	                        get_author_posts_url( get_the_author_meta( 'ID' ) ),
 	                        __('Posts by','dwqa'),
 	                        get_the_author_meta(  'display_name')
 	                    );
 	                ?></span><!-- Author Info --><span class="dwqa-date"><?php 
-	                    printf('<a href="%s" title="%s #%d">%s %s</a>',
+	                    printf('<a  target="_blank" href="%s" title="%s #%d">%s %s</a>',
 	                        get_permalink(),
 	                        __('Link to','dwqa'),
 	                        $post->ID,
@@ -40,7 +40,7 @@
 	            if( ! empty($categories) ) :
 	                $cat = $categories[0]
 	        ?>
-	        <div class="dwqa-category"><span class="dwqa-category-title"><?php _e('Category','dwqa') ?></span><a class="dwqa-category-name" href="<?php echo get_term_link( $cat );  ?>" title="<?php _e('All questions from','dwqa') ?> <?php echo $cat->name ?>"><?php echo $cat->name ?></a></div><?php endif; ?> <!-- Question Categories -->
+	        <div class="dwqa-category"><span class="dwqa-category-title"><?php _e('Category','dwqa') ?></span><a target="_blank" class="dwqa-category-name" href="<?php echo get_term_link( $cat );  ?>" title="<?php _e('All questions from','dwqa') ?> <?php echo $cat->name ?>"><?php echo $cat->name ?></a></div><?php endif; ?> <!-- Question Categories -->
 	        <div class="dwqa-answer-btn"><a target="_blank" href="<?php echo get_permalink(); ?>" class="dwqa-btn"><?php _e('Answer Now','dwqa') ?></a></div>
 	    </footer>
 	    <footer class="dwqa-footer-links">
