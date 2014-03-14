@@ -33,7 +33,7 @@
 	</div>
     <div class="dwqa-embed-summary">
     <?php
-        $content =  substr(get_the_content(), 0 , 153 );
+        $content =  DWQA_Embed::html_cut( get_the_content(), 153 );
         echo $content . '...';
     ?>
     </div>
