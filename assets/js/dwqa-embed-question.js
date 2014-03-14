@@ -1,3 +1,8 @@
+jQuery(document).ready(function($) {
+    if ($('.dwqa-content-inner').height() < 200) {
+        $('.dwqa-content-inner').removeClass('dim').parent().find('.dwqa-read-more').hide();
+    }
+});
 jQuery('.dwqa-question-stand-alone .show-more-end,.dwqa-question-stand-alone .dwqa-read-more').on('click', function(event) {
     event.preventDefault();
     var parent = jQuery(this).closest('.dwqa-question-stand-alone');
@@ -8,5 +13,4 @@ jQuery('.dwqa-question-stand-alone .show-more-end,.dwqa-question-stand-alone .dw
     } else {
         parent.find('.dwqa-read-more').text('-- Less --');
     }
-
 });

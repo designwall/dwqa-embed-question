@@ -23,7 +23,7 @@ class DWQA_Embed {
         $this->path = trailingslashit( plugin_dir_path( __FILE__ ) );
 
         add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
-        add_filter( 'the_content', array($this, 'filter_content') );
+        add_filter( 'the_content', array($this, 'filter_content'), 9 );
         add_action( 'wp_head', array($this,'insert_meta_tag') );
         add_action( 'wp_enqueue_scripts', array($this, 'enqueue_scripts') );
         add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );
@@ -55,14 +55,14 @@ class DWQA_Embed {
         global $post, $dwqa_embed_loop;
         $this->depth++;
         $this->parent_post = $post;
-        $content = preg_replace_callback('#(?<=[\s>])(\()?([\w]+?://(?:[\w\\x80-\\xff\#$%&~/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)#is', array($this,'make_embed_code'), $content);
+        $content = preg_replace_callback('/(?<=\s|\n|\r|p>)(\()?([\w]+?:\/\/(?:[\w\\x80-\\xff\#$%&~\/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)/is', array($this,'make_embed_code'), $content);
 
         $this->depth = 0;
         return do_shortcode($content);
     } 
 
     public function make_embed_code( $matches ){
-        $link = $matches[0];
+        $link = $matches[2];
         $site_link = get_bloginfo('url');
         if (strpos($link, $site_link) === false) {
             return $matches[0];
