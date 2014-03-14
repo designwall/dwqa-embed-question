@@ -25,28 +25,16 @@ class DWQA_Embed {
         add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
         add_filter( 'the_content', array($this, 'filter_content'), 9 );
         add_action( 'wp_head', array($this,'insert_meta_tag') );
-        add_action( 'wp_enqueue_scripts', array($this, 'enqueue_scripts') );
         add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );
         add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
         
         add_action( 'init', array( $this, 'load_languages') );
-        if( isset($_REQUEST['dwqa-embed']) && $_REQUEST['dwqa-embed'] ) {
-            add_filter( 'show_admin_bar', '__return_false' );
-        }
-
-        if( isset($_REQUEST['dwqa-embed']) && $_REQUEST['dwqa-embed'] ){
-            remove_filter( 'wp_footer', 'dwpb',100 );
-        }
     }
 
     public function load_languages(){
         load_plugin_textdomain( 'dwqa', false, $this->path . 'languages/' );
     }
 
-    public function enqueue_scripts(){
-        wp_enqueue_style( 'dwqa-embed-question', $this->uri . 'assets/css/dwqa-embed-question.css' );
-        wp_enqueue_script( 'dwqa-embed-question', $this->uri . 'assets/js/dwqa-embed-question.js', array('jquery'), false, true );
-    }
 
     public function filter_content( $content ){
         if( $this->depth > 0 ) {

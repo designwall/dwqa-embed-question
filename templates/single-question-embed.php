@@ -14,13 +14,15 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<?php wp_head(); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) . '../assets/css/dwqa-embed-question.css' ?>">
 </head>
 
 <body <?php body_class(); ?>>
 	<?php global $post; $dwqa_embed; setup_postdata( $post ); ?>
 	<?php $dwqa_embed->load_template('embed','question'); ?>
 	<?php wp_reset_postdata(); ?>
-	<?php wp_footer(); ?>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) . '../assets/js/dwqa-embed-question.js' ?>"></script>
 </body>
 </html>
