@@ -19,8 +19,8 @@ class DWQA_Embed {
             return false;
         }
         $this->depth = 0;
-        $this->uri = plugin_dir_url( __FILE__ );
-        $this->path = plugin_dir_path( __FILE__ );
+        $this->uri = trailingslashit( plugin_dir_url( __FILE__ ) );
+        $this->path = trailingslashit( plugin_dir_path( __FILE__ ) );
 
         add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
         add_filter( 'the_content', array($this, 'filter_content') );
@@ -29,6 +29,7 @@ class DWQA_Embed {
         add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );
         add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
         
+        add_action( 'init', array( $this, 'load_languages') );
         if( isset($_REQUEST['dwqa-embed']) && $_REQUEST['dwqa-embed'] ) {
             add_filter( 'show_admin_bar', '__return_false' );
         }
@@ -36,6 +37,10 @@ class DWQA_Embed {
         if( isset($_REQUEST['dwqa-embed']) && $_REQUEST['dwqa-embed'] ){
             remove_filter( 'wp_footer', 'dwpb',100 );
         }
+    }
+
+    public function load_languages(){
+        load_plugin_textdomain( 'dwqa', false, $this->path . 'languages/' );
     }
 
     public function enqueue_scripts(){
