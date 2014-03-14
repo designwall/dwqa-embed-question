@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DW Question & Answer - Embed Question\n"
+"POT-Creation-Date: 2014-03-14 10:18+0700\n"
+"PO-Revision-Date: 2014-03-14 10:18+0700\n"
+"Last-Translator: DesignWall <webmaster@designwall.com>\n"
+"Language-Team: DesignWall <hi@designwall.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../templates/embed-question-small.php:18 ../templates/embed-question.php:57
+msgid "answer"
+msgstr ""
+
+#: ../templates/embed-question-small.php:29 ../templates/embed-question.php:68
+msgid "view"
+msgstr ""
+
+#: ../templates/embed-question.php:12
+msgid "-- More --"
+msgstr ""
+
+#: ../templates/embed-question.php:26
+msgid "Posts by"
+msgstr ""
+
+#: ../templates/embed-question.php:32
+msgid "Link to"
+msgstr ""
+
+#: ../templates/embed-question.php:34
+msgid "asked"
+msgstr ""
+
+#: ../templates/embed-question.php:43
+msgid "Category"
+msgstr ""
+
+#: ../templates/embed-question.php:43
+msgid "All questions from"
+msgstr ""
+
+#: ../templates/embed-question.php:44
+msgid "Answer Now"
+msgstr ""
+
+#: ../templates/question-sharer.php:6
+msgid "Share this"
+msgstr ""
+
+#: ../templates/question-sharer.php:12
+msgid "Share on Facebook"
+msgstr ""
+
+#: ../templates/question-sharer.php:13
+msgid "Share on Google+"
+msgstr ""
+
+#: ../templates/question-sharer.php:14
+msgid "Share on Twitter"
+msgstr ""
+
+#: ../templates/question-sharer.php:15
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: ../templates/question-sharer.php:16
+msgid "Share on Tumblr"
+msgstr ""
+
+#: ../templates/question-sharer.php:17
+msgid "Embed Code"
+msgstr ""
+
+#: ../templates/question-sharer.php:21
+msgid "Copy and paste this code into your website."
+msgstr ""
+
+#: ../templates/question-sharer.php:24
+msgid "Preview:"
+msgstr ""
+
+#: ../templates/question-sharer.php:26
+msgid "Size (px):"
+msgstr ""

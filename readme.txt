@@ -1,8 +1,4 @@
-dwqa-embed-question
-===================
-
-Embed Question Add-on For DW Question &amp; Answer Plugin
-
+=== DW Question Answer - Embed Question ===
 Contributors: designwall
 Tags: question, answer, embed question
 Requires at least: 3.0.1
