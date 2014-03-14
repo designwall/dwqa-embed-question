@@ -70,7 +70,7 @@
                 ?></a>
 	    	</div>
 			<div class="dwqa-actions">
-				<a target="_blank" href="<?php echo get_permalink(); ?>#dwqa-add-answers"><i class="fa fa-mail-reply"></i></a>&nbsp;&nbsp;<a target="_blank" href="<?php echo get_permalink(); ?>"><i class="fa fa-star"></i></a>
+				<a title="<?php _e('Add an answer','dwqa') ?>" target="_blank" href="<?php echo get_permalink(); ?>#dwqa-add-answers"><i class="fa fa-mail-reply"></i></a>&nbsp;&nbsp;<a title="<?php _e('Follow this question','dwqa') ?>" target="_blank" href="<?php echo get_permalink(); ?>"><i class="fa fa-star"></i></a>
 			</div>
 	    </footer>
 	</article><!-- end question --></div>
