@@ -55,10 +55,10 @@ class DWQA_Embed {
         global $post, $dwqa_embed_loop;
         $this->depth++;
         $this->parent_post = $post;
-        $content = preg_replace_callback('/(?<=\s|\n|\r|p>)(\()?([\w]+?:\/\/(?:[\w\\x80-\\xff\#$%&~\/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)/is', array($this,'make_embed_code'), $content);
+        $content = preg_replace_callback('/(?<=\s|\n|\r|p>|br>|\/>)(\()?([\w]+?:\/\/(?:[\w\\x80-\\xff\#$%&~\/=?@\[\](+-]|[.,;:](?![\s<]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)/is', array($this,'make_embed_code'), $content);
 
         $this->depth = 0;
-        return do_shortcode($content);
+        return do_shortcode( wpautop($content) );
     } 
 
     public function make_embed_code( $matches ){
