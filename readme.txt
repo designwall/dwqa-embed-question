@@ -35,7 +35,6 @@ Feature
 == Changelog ==
 
 = 1.0.0 =
-* Update Languages
-* Release
+* Initial Release
 
 
