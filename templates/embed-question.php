@@ -1,4 +1,4 @@
-<?php global $post  ?>
+<?php global $post, $dwqa_embed;  ?>
 <div class="dwqa-question-stand-alone">
 	<article id="question-<?php echo $post->ID ?>" <?php post_class( 'dwqa-question' ); ?>>
 	    <header class="dwqa-header">
@@ -13,7 +13,7 @@
 	    </div>
 		
 	    <?php 
-	        $tags = get_the_term_list( $post->ID, 'dwqa-question_tag', '<span class="dwqa-tag">', '</span><span class="dwqa-tag">', '</span>' );
+	        $tags = DWQA_Embed::get_the_term_list( $post->ID, 'dwqa-question_tag', '<span class="dwqa-tag">', '</span><span class="dwqa-tag">', '</span>' );
 	        if( ! empty($tags) ) :
 	    ?>
 	    <div class="dwqa-tags"><?php echo $tags; ?></div>

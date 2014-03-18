@@ -27,7 +27,7 @@ class DWQA_Embed {
         add_action( 'wp_head', array($this,'insert_meta_tag') );
         add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );
         add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
-        
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
         add_action( 'init', array( $this, 'load_languages') );
     }
 
@@ -164,6 +164,10 @@ class DWQA_Embed {
         setup_postdata( $post );
     }
 
+    public function enqueue_scripts(){
+        wp_enqueue_style( 'dw-embed-question', $this->uri . 'assets/css/dwqa-embed-question.css');
+    }
+
     static function html_cut($text, $max_length) {
         $tags   = array();
         $result = "";
@@ -258,6 +262,27 @@ class DWQA_Embed {
             $result .= "</".array_pop($tags).">";
 
         return $result;
+    }
+
+    static function get_the_term_list( $id, $taxonomy, $before = '', $sep = '', $after = '' ) {
+            $terms = get_the_terms( $id, $taxonomy );
+    
+            if ( is_wp_error( $terms ) )
+                    return $terms;
+    
+            if ( empty( $terms ) )
+                    return false;
+    
+            foreach ( $terms as $term ) {
+                    $link = get_term_link( $term, $taxonomy );
+                    if ( is_wp_error( $link ) )
+                            return $link;
+                    $term_links[] = '<a target="_blank" href="' . esc_url( $link ) . '" rel="tag">' . $term->name . '</a>';
+            }
+    
+            $term_links = apply_filters( "term_links-$taxonomy", $term_links );
+    
+            return $before . join( $sep, $term_links ) . $after;
     }
 }
 
