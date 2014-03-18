@@ -12,7 +12,7 @@ Your WordPress site will have a full-featured Question & Answer section like Sta
 == Description ==
 
 DWQA Embed Question is a free, simple and small WordPress Plugin (add-on) for the DW Question & Answer plugin. It allows users to share any great question on Social media channels such as Faceboook, Google Plus, Twitter, Linkedin, Tumblr. 
-You can also embed any interesting question from DW Question & Answer site into your blog post, page content and event the Text widget. 
+You can also embed any interesting question from DW Question & Answer site into your blog post, page content and even the Text widget. 
 
 Feature
 * Share a question on the Social Media sites.
@@ -38,6 +38,4 @@ Feature
 * Update Languages
 * Release
 
-= 0.0.1 =
 
-* The first version of DW Question Answer - Embed Qiestion
