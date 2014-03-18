@@ -7,7 +7,10 @@ Stable tag: 1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Your WordPress site will have a full-featured Question & Answer section like Stack Overflow, Quora or Yahoo Answers
+Your WordPress site still have a full-featured Question & Answer section like Stack Overflow, Quora or Yahoo Answers. 
+DWQA Embed Question plugin will be auto-integrated with the DW Question & Answer plugin right after installing successfully.
+With one click , the DWQA Embed Question lets you share a favourite question via Social channels more quickly than ever.
+Plus, by pasting directly the question link, using the iFrame style of the question or even shortcode, you can easily embed the question from any Question site using the DW Question & Answer plugin into the other sites.
 
 == Description ==
 
