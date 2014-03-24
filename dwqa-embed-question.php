@@ -25,10 +25,16 @@ class DWQA_Embed {
         add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
         add_filter( 'the_content', array($this, 'filter_content'), 9 );
         add_action( 'wp_head', array($this,'insert_meta_tag') );
-        add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );
+        
+        if( get_option('dwqa-embed-enable-social') ) {
+            add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );    
+        }
+
         add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
         add_action( 'init', array( $this, 'load_languages') );
+        add_action( 'admin_init', array( $this, 'register_setting') );
+        add_action( 'admin_menu', array( $this, 'setting_menu') );
     }
 
     public function load_languages(){
@@ -262,6 +268,43 @@ class DWQA_Embed {
             $result .= "</".array_pop($tags).">";
 
         return $result;
+    }
+
+    public function setting_menu(){
+        add_submenu_page( 'edit.php?post_type=dwqa-question', __('DWQA Embed Question Settings','dwqa'), __('DWQA Embed','dwqa'), 'manage_options', 'dwqa-embed-question-settings', array( $this, 'setting_page') );
+    }
+
+    public function setting_page() {
+        ?>
+        <div class="wrap">
+            <h2><?php _e('Embed Settings','dwqa') ?></h2>
+            <form action="options.php" method="post">
+                <?php  
+                    settings_fields( 'dwqa-embed-settings' );
+                    do_settings_sections( 'dwqa-embed-settings' );
+                    submit_button( __('Submit','dwqa') );
+                ?>
+            </form>
+        </div>
+        <?php
+    }
+
+    public function register_setting() {
+        add_settings_section( 'dwqa-embed-settings', false, false, 'dwqa-embed-settings' );
+        add_settings_field( 
+            'dwqa-embed-enable-social', 
+            __('Enable Social Share','dwqa'), 
+            array( $this, 'dwqa_embed_enable_social_display'), 
+            'dwqa-embed-settings', 
+            'dwqa-embed-settings'
+        );
+        register_setting( 'dwqa-embed-settings', 'dwqa-embed-enable-social' );
+    }
+
+    public function dwqa_embed_enable_social_display() {
+        ?>
+        <input type="checkbox" name="dwqa-embed-enable-social" id="dwqa-embed-enable-social" <?php checked( 1, get_option('dwqa-embed-enable-social'), true ); ?> value="1">
+        <?php
     }
 
     static function get_the_term_list( $id, $taxonomy, $before = '', $sep = '', $after = '' ) {
