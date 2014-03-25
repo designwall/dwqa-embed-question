@@ -4,7 +4,7 @@
  * Author: DesignWall 
  * Author URI: http://designwall.com/
  * Description: An addon for DW Question Answer plugin. Allow user embed question inside blog post with link or shortcode. Create an embed script for sharing.
- * Version: 0.0.1
+ * Version: 1.0.0
  */
 
 
