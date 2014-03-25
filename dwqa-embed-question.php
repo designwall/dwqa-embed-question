@@ -64,6 +64,9 @@ class DWQA_Embed {
             global $post;
             $parent_post = $post;
             $post_id = url_to_postid( $link );
+            if( ! $post_id ) {
+                return $matches[0];
+            }
             if( 'dwqa-question' == get_post_type( $post_id ) && $post_id != $post->ID ) {
                 $post = get_post( $post_id );
                 setup_postdata( $post );
