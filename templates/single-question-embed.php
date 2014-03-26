@@ -15,6 +15,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) . '../dw-question-answer/inc/templates/default/assets/css/style.css' ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) . '../assets/css/dwqa-embed-question.css' ?>">
 </head>
 
