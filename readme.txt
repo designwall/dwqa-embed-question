@@ -34,7 +34,7 @@ Feature
 1. Embed Question inside Blog's Posts
 2. Embed Question inside Question/Answer content
 3. Get Embed Code
-4. Embed question in other site
+4. Embed question text widget
 
 == Changelog ==
 
