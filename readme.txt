@@ -3,7 +3,7 @@ Contributors: designwall
 Tags: question, answer, embed question
 Requires at least: 3.0.1
 Tested up to: 3.8
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,10 @@ Feature
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Paste your question link inside your blog's post.
 
+*Note:To be compatible with DW Question & Answer 1.4+, open file in this path : dw-question-answer/templates/content-single-question.php
+ >> Line 42 ( before : <?php comments_template(); ?> ) add this code
+ >> <?php do_action( 'dwqa-question-content-footer' ); ?>
+
 == Screenshots ==
 
 1. Embed Question inside Blog's Posts
@@ -37,6 +41,13 @@ Feature
 4. Embed question text widget
 
 == Changelog ==
+= 1.0.2 =
+* Fix: Style compatible with DW Question & Answer 1.4+
+
+
+
+= 1.0.1 =
+* Fix: Compatible with DW Question & Answer 1.3.8
 
 = 1.0.0 =
 * Initial Release

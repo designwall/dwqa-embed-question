@@ -69,5 +69,5 @@
         });
     </script>
 </footer>
-<?php endif; ?>
 
+<?php endif; ?>

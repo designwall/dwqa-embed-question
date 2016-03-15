@@ -4,7 +4,7 @@
  * Author: DesignWall 
  * Author URI: http://designwall.com/
  * Description: An addon for DW Question Answer plugin. Allow user embed question inside blog post with link or shortcode. Create an embed script for sharing.
- * Version: 1.0.0
+ * Version: 1.0.2
  */
 
 
@@ -15,26 +15,30 @@ class DWQA_Embed {
     private $path;
 
     public function __construct(){
-        if( ! function_exists('dwqa_activate') ) {
-            return false;
-        }
+        add_action( 'init', array( $this, 'dwqa_check' ) );
         $this->depth = 0;
         $this->uri = trailingslashit( plugin_dir_url( __FILE__ ) );
         $this->path = trailingslashit( plugin_dir_path( __FILE__ ) );
+    }
 
-        add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
-        add_filter( 'the_content', array($this, 'filter_content'), 9 );
-        add_action( 'wp_head', array($this,'insert_meta_tag') );
-        
-        if( get_option('dwqa-embed-enable-social') ) {
-            add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );    
-        }
+    public function dwqa_check() {
+        if ( class_exists( 'DW_Question_Answer' ) ) {
+            add_filter( 'dwqa-load-template', array($this,'embed_question_template'), 10, 2 );
+            add_filter( 'the_content', array($this, 'filter_content'), 9 );
+            add_action( 'wp_head', array($this,'insert_meta_tag') );
+            
+            if( get_option('dwqa-embed-enable-social') ) {
+                add_action( 'dwqa-question-content-footer', array( $this, 'show_sharer') );    
+            }
 
-        add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
-        add_action( 'init', array( $this, 'load_languages') );
-        add_action( 'admin_init', array( $this, 'register_setting') );
-        add_action( 'admin_menu', array( $this, 'setting_menu') );
+            add_shortcode( 'dwqa_question', array($this, 'embed_shortcode') );
+            add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts') );
+            add_action( 'init', array( $this, 'load_languages') );
+            add_action( 'admin_init', array( $this, 'register_setting') );
+            add_action( 'admin_menu', array( $this, 'setting_menu') );
+        } else {
+            return;
+        } 
     }
 
     public function load_languages(){
@@ -156,9 +160,9 @@ class DWQA_Embed {
         if( ! file_exists($template) ) {
             $template = $this->path . 'templates/' .$name.'.php';
         }
-
         $template = apply_filters( 'dwqa-load-embed-template', $template, $name );
         if( ! $template ) {
+
             return false;
         }
         if( ! $include ) {
